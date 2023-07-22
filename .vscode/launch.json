@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "name": "Debug SwiftGardenPi",
+            "program": "${workspaceFolder:SwiftGardenPi}/.build/debug/SwiftGardenPi",
+            "args": [],
+            "cwd": "${workspaceFolder:SwiftGardenPi}",
+            "preLaunchTask": "swift: Build Debug SwiftGardenPi"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "name": "Release SwiftGardenPi",
+            "program": "${workspaceFolder:SwiftGardenPi}/.build/release/SwiftGardenPi",
+            "args": [],
+            "cwd": "${workspaceFolder:SwiftGardenPi}",
+            "preLaunchTask": "swift: Build Release SwiftGardenPi"
+        }
+    ]
+}

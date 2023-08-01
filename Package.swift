@@ -7,6 +7,7 @@ private extension PackageDescription.Target.Dependency {
     static let crypto: Self = .product(name: "Crypto", package: "swift-crypto")
     static let swiftyGPIO: Self = .product(name: "SwiftyGPIO", package: "SwiftyGPIO")
     static let alamofire: Self = .product(name: "Alamofire", package: "Alamofire")
+    static let pythonKit: Self = .product(name: "PythonKit", package: "PythonKit")
 }
 
 let package = Package(
@@ -18,6 +19,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-crypto.git", "1.0.0" ..< "3.0.0"),
         .package(url: "https://github.com/uraimo/SwiftyGPIO.git", from: "1.0.0"),
         .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.7.0"),
+        .package(url: "https://github.com/pvieito/PythonKit", branch: "master"),
     ],
     targets: [
         .executableTarget(
@@ -26,6 +28,10 @@ let package = Package(
                 .alamofire,
                 .crypto,
                 .swiftyGPIO,
+                .pythonKit,
+            ],
+            resources: [
+                .process("post_image.py"),
             ]),
         .testTarget(
             name: "SwiftGardenPiTests",

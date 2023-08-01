@@ -20,7 +20,10 @@ final class SwitchbotManger {
         let token = Secrets.Switchbot.token
         let secret = Secrets.Switchbot.clientSecret
         // 13digits timestamp is required
-        let timestamp = String(Int(Date().timeIntervalSince1970 * 1000))
+        // my RaspberryPi is 32bit, so length of digits of Int.max is smaller than date value.
+        // so use Int64
+        // https://qiita.com/shimesaba/items/dbbc0f4ec80d011273d6
+        let timestamp = String(Int64(Date().timeIntervalSince1970 * 1000))
         let nonce = UUID().uuidString
         let data = token + timestamp + nonce
 

@@ -5,16 +5,23 @@ import Foundation
 public struct SwiftGardenPi {
     public static func main() async {
         do {
+            let result = try PythonCall.postImage()
+            print(result)
+            return
+            try ShellCall.sendImage(token: FirebaseManager.accessToken, fileURL: URL(fileURLWithPath: "/Users/yugo.sugiyama/Dev/Swift/SwiftGarden/SwiftGardenPi/Sources/SwiftGardenPi/Images/1690651182.jpeg"))
+            return
             let URL = try ShellCall.takeImage()
             let cloudStorageResponse = try await FirebaseManager.postImage(fileURL: URL)
-            let switchbotResponse = try await SwitchbotManger.fetchMeterInfo()
-            let firestoreRequest = FirestorePostRequest(
-                imageName: cloudStorageResponse.name,
-                imageURL: cloudStorageResponse.mediaLink,
-                date: Date(),
-                temperature: switchbotResponse.temperature,
-                humidity: switchbotResponse.humidity
-            )
+            print(cloudStorageResponse)
+//            let switchbotResponse = try await SwitchbotManger.fetchMeterInfo()
+//            print(switchbotResponse)
+//            let firestoreRequest = FirestorePostRequest(
+//                imageName: cloudStorageResponse.name,
+//                imageURL: cloudStorageResponse.mediaLink,
+//                date: Date(),
+//                temperature: switchbotResponse.temperature,
+//                humidity: switchbotResponse.humidity
+//            )
 //            let firestoreRequest = FirestorePostRequest(
 //                imageName: "TestName!",
 //                imageURL: URL(string: "https://firebasestorage.googleapis.com/v0/b/mydevelopment-cdc30.appspot.com/o/Images%2F1690133732.181498.jpeg")!,
@@ -22,10 +29,10 @@ public struct SwiftGardenPi {
 //                temperature: 22.0,
 //                humidity: 70
 //            )
-            let _ = try await FirebaseManager.postData(requestBody: firestoreRequest)
+//            let _ = try await FirebaseManager.postData(requestBody: firestoreRequest)
             print("Completed!")
         } catch {
-            print(error)
+            print(error.localizedDescription)
         }
     }
 }

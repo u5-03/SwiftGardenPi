@@ -93,8 +93,15 @@ struct AlamofireUploadRequest: AlamofireRequest {
     let headers: HTTPHeaders?
     
     var asRequest: Request {
+//        AF.upload(
+//            fileURL,
+//            to: URL,
+//            method: method,
+//            headers: headers
+//        )
+
         AF.upload(
-            fileURL,
+            FileManager.default.contents(atPath: fileURL.path)!,
             to: URL,
             method: method,
             headers: headers

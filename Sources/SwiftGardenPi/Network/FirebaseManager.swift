@@ -66,7 +66,7 @@ final class FirebaseManager {
     }
 }
 
-private extension FirebaseManager {
+extension FirebaseManager {
     private static let retryMaxCount = 2
     static var accessTokenFileURL: URL {
         // `appending()` can't be used in Linux

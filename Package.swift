@@ -8,6 +8,7 @@ private extension PackageDescription.Target.Dependency {
     static let swiftyGPIO: Self = .product(name: "SwiftyGPIO", package: "SwiftyGPIO")
     static let alamofire: Self = .product(name: "Alamofire", package: "Alamofire")
     static let pythonKit: Self = .product(name: "PythonKit", package: "PythonKit")
+    static let asyncHTTPClient: Self = .product(name: "AsyncHTTPClient", package: "async-http-client")
 }
 
 let package = Package(
@@ -20,6 +21,7 @@ let package = Package(
         .package(url: "https://github.com/uraimo/SwiftyGPIO.git", from: "1.0.0"),
         .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.7.0"),
         .package(url: "https://github.com/pvieito/PythonKit", branch: "master"),
+        .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.18.0")
     ],
     targets: [
         .executableTarget(
@@ -29,6 +31,7 @@ let package = Package(
                 .crypto,
                 .swiftyGPIO,
                 .pythonKit,
+                .asyncHTTPClient,
             ],
             resources: [
                 .process("post_image.py"),

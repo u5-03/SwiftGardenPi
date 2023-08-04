@@ -31,4 +31,8 @@ public extension Encodable {
 
         return dictionary
     }
+    
+    func asData(using encoder: JSONEncoder = JSONEncoder()) throws -> Data {
+        return try encoder.encode(self)
+    }
 }

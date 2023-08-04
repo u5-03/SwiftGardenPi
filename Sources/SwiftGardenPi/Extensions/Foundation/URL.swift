@@ -13,4 +13,10 @@ extension Foundation.URL {
         return appending(path: path)
 #endif
     }
+    
+    var fileByteLength: Int {
+        guard let attributes = try? FileManager.default.attributesOfItem(atPath: path),
+              let fileSize = attributes[.size] as? Int else { fatalError() }
+        return fileSize
+    }
 }

@@ -8,8 +8,10 @@ import Foundation
 struct ShellCall {
     // Ref: https://ja.stackoverflow.com/q/65654
     static func takeImage() throws -> Foundation.URL {
-//        let imageFileName = "\(String(Date().timeIntervalSince1970)).\(Constants.imageFileExtension)"
-        let imageFileName = "1690651182.jpeg"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMddHHmmss"
+        let currentDateString = dateFormatter.string(from: Date())
+        let imageFileName = "\(currentDateString).\(Constants.imageFileExtension)"
         let destinationURL: URL
 #if os(Linux)
         let command = "/usr/bin/libcamera-still"

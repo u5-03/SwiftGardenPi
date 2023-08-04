@@ -6,7 +6,7 @@ def post_image():
     headers = {
         'Accept': '*/*',
         'Content-Type': 'image/jpeg',
-        'Authorization': 'Bearer ya29.a0AbVbY6M7WSqx5qWqBuNgxUQaVL2VwlzYPEwFzf4nyiWXkkvJbdwx__l12ZBQf9VZGNwlr_qDswevSZIo1DhDXUT63Nfcs1_wOSbmYXqbQQ-8pinPzXroaeBTCUA8X1jIImkSld3K1yo_-A7PD8Mut5pniUnsOfRQaCgYKARwSARMSFQFWKvPlV-0EQhuZGD7KTdDHJwrQtw0167'
+        'Authorization': 'Bearer ya29.a0AfB_byAKy0aNtGSvcMErEJUy0tyMvkFw8F0sAO_BQdmqTht2MVWvjrITTBilK8QQDwUC2p-cA_faWMeCYQI7HkrhFPPWx3Vh40TzS_IujjwYmv1BLIdOzEkbqNPyB6yEPBal6_uHxo6PqwWgNwMJ3q72iJAuBp3ERAaCgYKAUASARMSFQHsvYlsBmH5UFpMAH-QyxE2M0nmLg0169'
     }
     data = open('/Users/yugo.sugiyama/Dev/Swift/SwiftGarden/SwiftGardenPi/Sources/SwiftGardenPi/Images/1690651182.jpeg', 'rb').read()
 

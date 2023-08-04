@@ -4,10 +4,10 @@
 //
 
 import Foundation
-import PythonKit
+//import PythonKit
 
 final class PythonCall {
-    static func postImage() -> String {
+//    static func postImage() -> String {
 //        let task = Process()
 //        task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
 //
@@ -32,22 +32,22 @@ final class PythonCall {
 //
 //        return output
 
-        let sys = Python.import("sys")
-        let path: String
-        let postImage: PythonObject
-        #if os(Linux)
-        // If on linux, `Path.current` returns repository path
-        path = "\(FileManager.default.currentDirectoryPath)/Sources/SwiftGardenPi"
-        sys.path.append(path)
-        postImage = Python.import("post_image")
-        #else
-        // If on Mac, `Path.current` returns DerivedData path
-        path = "\(FileManager.default.currentDirectoryPath)/SwiftGardenPi_SwiftGardenPi.bundle/Contents/Resources/"
-        print(path)
-        sys.path.append(path)
-        postImage = Python.import("post_image")
-        #endif
-
-        return postImage.post_image().description
-    }
+//        let sys = Python.import("sys")
+//        let path: String
+//        let postImage: PythonObject
+//        #if os(Linux)
+//        // If on linux, `Path.current` returns repository path
+//        path = "\(FileManager.default.currentDirectoryPath)/Sources/SwiftGardenPi"
+//        sys.path.append(path)
+//        postImage = Python.import("post_image")
+//        #else
+//        // If on Mac, `Path.current` returns DerivedData path
+//        path = "\(FileManager.default.currentDirectoryPath)/SwiftGardenPi_SwiftGardenPi.bundle/Contents/Resources/"
+//        print(path)
+//        sys.path.append(path)
+//        postImage = Python.import("post_image")
+//        #endif
+//
+//        return postImage.post_image().description
+//    }
 }

@@ -113,7 +113,7 @@ final class FirebaseManager {
         var request = HTTPClientRequest(url: URLList.tokenRefresh.URL.absoluteString)
         request.method = .POST
         request.headers.add(name: "Accept", value: "*/*")
-        request.body = .bytes(.init(data: try requestBody.asData()))
+        request.body = .bytes(ByteBuffer(bytes: try requestBody.asData()))
         let response = try await httpClient.execute(request, timeout: .seconds(30))
         print("HTTP head", response)
         try await httpClient.shutdown()

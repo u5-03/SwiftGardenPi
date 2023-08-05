@@ -23,4 +23,8 @@ enum Secrets {
         static let clientSecret = "65db1e876961bc3f83a84610b63882e1"
         static let meterDeviceId = "F0011D2866AA"
     }
+    
+    public enum Other {
+        public static let macPythonPath = "/Users/yugo.a.sugiyama/.pyenv/versions/3.10.6/lib/libpython3.10.dylib"
+    }
 }

@@ -11,9 +11,6 @@ public struct SwiftGardenPi {
             // try ShellCall.sendImage(token: FirebaseManager.accessToken, fileURL: URL(fileURLWithPath: "/Users/yugo.sugiyama/Dev/Swift/SwiftGarden/SwiftGardenPi/Sources/SwiftGardenPi/Images/1690651182.jpeg"))
             // return
             //
-            //            let token = try await FirebaseManager.refreshToken().accessToken
-            //            print(token)
-            //            return
             
             let URL = try ShellCall.takeImage()
 //            let URL = URL(fileURLWithPath: "/Users/yugo.a.sugiyama/Dev/Swift/SwiftGarden/SwiftGardenPi/Sources/SwiftGardenPi/Images/20230803234005.jpeg")

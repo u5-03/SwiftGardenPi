@@ -115,7 +115,6 @@ final class FirebaseManager {
         request.headers.add(name: "Accept", value: "*/*")
         request.body = .bytes(ByteBuffer(bytes: try requestBody.asData()))
         let response = try await httpClient.execute(request, timeout: .seconds(30))
-        print("HTTP head", response)
         try await httpClient.shutdown()
         if response.status == .ok {
             let byteBuffer = try await response.body.collect(upTo: 1024 * 1024) // 1
@@ -128,13 +127,10 @@ final class FirebaseManager {
         }
     }
     
-    static func postImageWithAsyncHTTPClient(fileURL: URL) async throws -> CloudStoragePostResponse {
-//        let eventLoopGroup = MultiThreadedEventLoopGroup(numberOfThreads: 1)
-//        let httpClient = HTTPClient(eventLoopGroupProvider: .shared(eventLoopGroup))
-//        defer {
-//            try? httpClient.syncShutdown()
-//            try? eventLoopGroup.syncShutdownGracefully()
-//        }
+    static func postImageWithAsyncHTTPClient(fileURL: URL, retryCount: Int = 0) async throws -> CloudStoragePostResponse {
+        if retryCount > retryMaxCount {
+            throw SwiftGardenError.retryError
+        }
 
         let fileName = fileURL.lastPathComponent
         let fileData = try Data(contentsOf: fileURL)
@@ -145,12 +141,14 @@ final class FirebaseManager {
         request.headers.add(name: "Accept", value: "*/*")
         request.headers.add(name: "Authorization", value: "Bearer \(accessToken)")
         request.headers.add(name: "Content-Type", value: "image/\(Constants.imageFileExtension)")
-//        request.body = .bytes(ByteBuffer(data: fileData))
         request.body = .bytes(fileData, length: .known(fileURL.fileByteLength))
 
         /// MARK: - Using Swift Concurrency
         let response = try await httpClient.execute(request, timeout: .seconds(30))
-        print("HTTP head", response)
+        if response.status.code == 401 {
+            let _ = try await fetchNewAccessToken()
+            return try await postImageWithAsyncHTTPClient(fileURL: fileURL, retryCount: retryCount + 1)
+        }
         try await httpClient.shutdown()
         if response.status == .ok {
             let byteBuffer = try await response.body.collect(upTo: 1024 * 1024) // 1 MB
@@ -158,7 +156,6 @@ final class FirebaseManager {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             return try decoder.decode(CloudStoragePostResponse.self, from: responseData)
-            // handle body
         } else {
             throw SwiftGardenError.errorRespoonse(statusCode: Int(response.status.code))
         }

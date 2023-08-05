@@ -8,7 +8,7 @@ import sys
 
 def generate_sign(token, secret):
     nonce = str(uuid.uuid4())
-    t = int(round(time.time() * 1000))
+    t = str(int(round(time.time() * 1000)))
     string_to_sign = '{}{}{}'.format(token, t, nonce)
 
     string_to_sign = bytes(string_to_sign, 'utf-8')

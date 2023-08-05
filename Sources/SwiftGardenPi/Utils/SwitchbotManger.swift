@@ -9,7 +9,7 @@ import Alamofire
 
 struct SwitchbotAuthInfo: Decodable {
     let nonce: String
-    let timestamp: Int
+    let timestamp: String
     let sign: String
     let token: String
 }

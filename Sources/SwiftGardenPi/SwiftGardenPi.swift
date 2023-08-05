@@ -18,7 +18,6 @@ public struct SwiftGardenPi {
             
             let cloudStorageResponse = try await FirebaseManager.postImageWithAsyncHTTPClient(fileURL: URL)
             let switchbotResponse = try await SwitchbotManger.fetchMeterInfo()
-            print(switchbotResponse)
             let firestoreRequest = FirestorePostRequest(
                 imageName: cloudStorageResponse.name,
                 imageURL: cloudStorageResponse.mediaLink,

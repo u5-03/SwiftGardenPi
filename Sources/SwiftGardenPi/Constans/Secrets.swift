@@ -13,7 +13,7 @@ enum Secrets {
         static let projectId = "\(projectShortId).appspot.com"
         static let projectShortId = "mydevelopment-cdc30"
         enum Firestore {
-            static let collectionId = "swiftGarden"
+            static let collectionId = "swiftGardenData"
         }
     }
 

@@ -149,6 +149,7 @@ final class FirebaseManager {
             let _ = try await fetchNewAccessToken()
             return try await postImageWithAsyncHTTPClient(fileURL: fileURL, retryCount: retryCount + 1)
         }
+        print(response.status.code)
         try await httpClient.shutdown()
         if response.status == .ok {
             let byteBuffer = try await response.body.collect(upTo: 1024 * 1024) // 1 MB

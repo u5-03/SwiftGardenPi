@@ -50,7 +50,7 @@ public struct SwiftGardenPi {
         let command = CommandKind.converted(from: CommandLine.arguments)
         await runCommand(command: command)
     }
-    
+
     private static func runCommand(command: CommandKind, retryCount: Int = 0) async {
         print("Command is \(command)")
         do {

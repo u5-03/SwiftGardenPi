@@ -31,7 +31,7 @@ struct CloudStoragePostResponse: Decodable {
 //  "id": "(ProjectID)/Images/storage_sample_image.png/1690011077606576",
 //  "selfLink": "https://www.googleapis.com/storage/v1/b/(ProjectID)/o/Images%2Fstorage_sample_image.png",
 //  "mediaLink": "https://storage.googleapis.com/download/storage/v1/b/(ProjectID)/o/Images%2Fstorage_sample_image.png?generation=1690011077606576&alt=media",
-//  "name": "Images/storage_sample_image.png",
+//  "name": "SwiftGardenImages/storage_sample_image.png",
 //  "bucket": "(ProjectID)",
 //  "generation": "1690011077606576",
 //  "metageneration": "1",

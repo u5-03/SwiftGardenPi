@@ -27,14 +27,16 @@ final class GPIOManager {
     
     func drainWater(second: Int) async {
 #if os(Linux)
-        Task {
-            waterDrainGPIO.value = 1
-            try! await Task.sleep(nanoseconds: UInt64(second * 1_000_000_000))
-            waterDrainGPIO.value = 0
-        }
+        waterDrainGPIO.value = 1
+        print("Started draining water")
+        try! await Task.sleep(nanoseconds: UInt64(second * 1_000_000_000))
+        waterDrainGPIO.value = 0
+        print("Stopped draining water")
 #else
         print("This is not linux OS!")
+        print("Started draining water")
         try! await Task.sleep(nanoseconds: UInt64(second * 1_000_000_000))
+        print("Stopped draining water")
 #endif
     }
 }

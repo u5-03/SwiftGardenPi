@@ -6,6 +6,6 @@
 import Foundation
 
 enum Constants {
-    static let imageParentDirectoryName = "Images"
+    static let imageParentDirectoryName = "SwiftGardenImages"
     static let imageFileExtension = "jpeg"
 }

@@ -1,11 +1,18 @@
+# can't build release build(extra research is required!)
 build:
-	swift build --configuration release
+	swift build
 run:
-	.build/release/SwiftGardenPi
-setBinary:
-	sudo cp .build/release/SwiftGardenPi /usr/local/bin/
-runBinary:
-	SwiftGardenPi
+	.build/debug/SwiftGardenPi
+setBinary: build
+	sudo cp .build/debug/SwiftGardenPi /usr/local/bin/
+runBinaryDataCapture:
+	SwiftGardenPi --captureData
+runBinaryDrainWater:
+	SwiftGardenPi --drainWater
+runBinarySwitchLightON:
+	SwiftGardenPi --switchLight isOn
+runBinarySwitchLightOFF:
+	SwiftGardenPi --switchLight isOff
 removeSampleImages:
 	sh Scripts/remove_sample_images.sh
 resolve:

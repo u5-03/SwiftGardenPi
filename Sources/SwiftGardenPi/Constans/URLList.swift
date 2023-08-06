@@ -10,6 +10,7 @@ enum URLList {
     case postStorage
     case firestore
     case switchbotMeter
+    case switchbotPlug
 
     var urlString: String {
         switch self {
@@ -21,6 +22,8 @@ enum URLList {
             return "https://firestore.googleapis.com/v1/projects/\(Secrets.Firebase.projectShortId)/databases/(default)/documents/\(Secrets.Firebase.Firestore.collectionId)"
         case .switchbotMeter:
             return "https://api.switch-bot.com/v1.1/devices/\(Secrets.Switchbot.meterDeviceId)/status"
+        case .switchbotPlug:
+            return "https://api.switch-bot.com/v1.0/devices/\("")/commands"
         }
     }
 

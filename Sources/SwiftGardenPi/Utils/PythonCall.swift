@@ -17,7 +17,7 @@ final class PythonCall {
         path = "\(FileManager.default.currentDirectoryPath)/Sources/SwiftGardenPi"
         pythonPath = "/lib/arm-linux-gnueabihf/libpython3.9.so"
 #else
-        path = "\(FileManager.default.currentDirectoryPath)/SwiftGardenPi_SwiftGardenPi.bundle/Contents/Resources/"
+        path = "\(FileManager.default.currentDirectoryPath)/Sources/SwiftGardenPi"
         pythonPath = Secrets.Other.macPythonPath
 #endif
         PythonKit.PythonLibrary.useLibrary(at: pythonPath)

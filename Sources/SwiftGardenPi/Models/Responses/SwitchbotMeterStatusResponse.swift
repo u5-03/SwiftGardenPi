@@ -5,13 +5,13 @@
 
 import Foundation
 
-struct SwitchbotMeterStatusResponse: Decodable {
+struct SwitchbotResponse<T: Decodable>: Decodable {
     let message: String
     let statusCode: Int
-    let body: SwitchbotMeterStatusBodyResponse
+    let body: T
 }
 
-struct SwitchbotMeterStatusBodyResponse: Decodable {
+struct SwitchbotMeterStatusResponse: Decodable {
     let deviceId: String
     let humidity: Int
     let deviceType: String

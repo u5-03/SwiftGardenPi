@@ -14,7 +14,7 @@ struct ShellCall {
         let imageFileName = "\(currentDateString).\(Constants.imageFileExtension)"
         let destinationURL: URL
 #if os(Linux)
-        let command = "/usr/bin/libcamera-still"
+        let command = "/usr/bin/libcamera-jpeg"
         let parameter1 = "-o"
         let parameter2 = "\(Constants.imageParentDirectoryName)/\(imageFileName)"
         try shell(command, parameter1, parameter2)
